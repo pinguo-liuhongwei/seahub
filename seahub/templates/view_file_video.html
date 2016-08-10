@@ -9,10 +9,15 @@
 {% block extra_script %}{{ block.super }}
 {% if not err%}
 <script src="{{MEDIA_URL}}js/mediaelement-and-player.min.js"></script>
+<style>
+div.video-container{width:950px;height:543px;}
+</style>
 <script type="text/javascript">
-  $('#file-view').html('<div class="video-container"><video src="{{raw_path}}" width="800" height="400"></video></div>');
+  $('#file-view').html('<div class="video-container">'+
+        '<a href="{{raw_path}}" target="_blank">Open video in new tab</a>'+
+        '<video src="{{raw_path}}" width="950" height="543"></video>'+
+    '</div>');
 $('video').mediaelementplayer(/* Options */);
 </script>
-<a href="{{raw_path}}" target="_blank">Open video in new tab</a>
 {% endif %}
 {% endblock %}
